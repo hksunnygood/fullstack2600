@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <link rel="shortcut icon" href="img/logo_ico.png" type="image/x-icon" />
+  <title>SR Wine Review</title>
+</head>
+
+<body>
+  <div class="container">
+    <hr>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <div class="container-fluid" role="banner">
+          <img src="img/logo.png" width="50" height="50">&nbsp;
+          <a class="navbar-brand 2">Wine Review</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"cdata-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 h6">
+              <li class="nav-item ml-4 active">
+                <a class="nav-link btn btn-outline-primary" aria-current="page" data-page="home">Home</a>
+              </li>
+              <li class="nav-item dropdown" data-authenticated>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                  Member Page
+                </a>
+                <ul class="dropdown-menu" role="listbox" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item h5" role="menuitem" data-page="wines">World Wine</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>    
+                  <li>
+                    <a class="dropdown-item h5" role="menuitem" data-page="grape">Grapes</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>    
+                  <li>
+                    <a class="dropdown-item h5" role="menuitem" data-page="postreview">Post Review</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item ml-4">
+                <a class="nav-link btn btn-outline-primary" data-page="about">About</a>
+              </li>
+            </ul>
+            <form class="d-flex text-end h3 text-white" >
+              <div data-nonAuthenticated>
+                <a data-page ="register"  class="btn btn-outline-primary" >register</a>
+                <a data-page="login" class="btn btn-outline-primary">login</a>
+              </div>              
+              <div data-authenticated><img src="img/person.png" alt="person" width="30">&nbsp;<span class="h5 text-white"></span><button class="btn btn-info text-end" id="signout">Logout</button></div> 
+            </form>
+              <!--/ul-->
+          </div>
+        </div>
+      </nav>
+    </header>
+    <dialog id="noticeDialog" class="alert alert-dark text-white h4">
+      <div class="row">
+        <div class="col-md-1">
+        </div>
+        <!--One column in any screen device-->
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-header h2 text-white bg-info text-center">
+              Terms and Conditions
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>
+                  <ol>
+                    <li>You must be at least 19 years old to use the Site .</li>
+                    <li>We may change the Terms on occasion without notice, and you should revisit the Site periodically to review the then-current Terms. Revised Terms are effective once posted on or accessible from the Site.</li>
+                    <li>We have implemented reasonable technology and security features to safeguard your information from unauthorized access or improper use. While we make every effort to ensure that your information is secure on our system, no data transmission over the Internet can be guaranteed to be 100% secure. </li>
+                    <li>We respect your personal privacy. You may use the Site without providing any personal information about yourself other than such personal information as you may specifically and knowingly provide.</li>
+                    <li>This Site, its organization and design, and all information, images, artwork, text, video, audio, pictures and other material on the Site (collectively the “Content”) are protected by copyright and other proprietary rights, all of which we own or have the right to use.</li>
+                  </ol>
+                </p>
+                <hr>
+                <footer>
+                  <div class="input-group mb-3">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="agree">
+                    </div>
+                    <input type="text" class="form-control" aria-label="I agree to terms & conditions" value="I agree" disabled>
+                  </div>
+            <!--/div-->
+                  <form method="dialog" class="text-center">
+                    <button class="btn btn-lg btn-info" id="noticeButton">OK</button>
+                  </form>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="col-md-1"> </div>
+        </div>
+      </div>
+    </dialog>
+    <hr>
+    <section id="Home">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header bg-primary text-white text-center h3" role="heading">
+              Wine
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>
+                  Wine is about so much more than just a great label; it’s about an experience and community and, of course, what’s in the bottle. 
+                  That’s where SR comes in. We uses crowd-sourced data to personalize wine recommendations so that every community member feels 
+                  confident about their wine choices. Created for everyone who likes wine—from the wine curious to the wine enthusiast.<br>
+                </p>
+                <hr>
+                <footer class="blockquote-footer">Sunny & Ronald<sup>®</sup></footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header bg-primary text-white text-center h3" role="heading">
+              Our Vision
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>Our vision is to democratize the world of wine, making it accessible and enjoyable for all. We believe that everyone should feel welcome and empowered to explore the vast and diverse world of red and white wines.
+
+                  Our mission is to provide clear, user-friendly information and recommendations that cater to all levels of wine knowledge. We curate a diverse selection of wines, ensuring there's something for every palate and occasion.
+                  
+                  Through our inclusive approach, we aim to foster a sense of community among wine enthusiasts, encouraging sharing, learning, and connection. We believe that wine should be a source of pleasure and enjoyment for everyone, regardless of their background or experience.
+                  
+                  Join us as we break down barriers and celebrate the joy of wine together. Cheers to inclusivity, diversity, and the wonderful world of wine!
+                </p>
+                <hr>
+                <footer class="blockquote-footer">
+                  Promoting wine culture to the society (<cite title="Source Title">2024, Vancouver, BC</cite>)
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="Wines">
+      <div class="h1 text-center">Popular wines in the regions</div><br>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header"><span class="btn btn-outline-secondary">Select a Country</span></div>
+            <div class="card-body"><select class="h4 form-select" id="country" ><option>Select a Country</option></select></div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header"><span class="btn btn-outline-secondary">Select a Region</span></div>
+            <div class="card-body"><select class="h4 form-select" id="region" ></select></div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center h2" id="header">
+      </div>
+      <div class="text-center">
+        <table class="table table-striped">
+          <thead>
+
+          </thead>
+          <tbody id="info" class="text-start" role="listbox">
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section id="Grapes">
+      <div class="h1 text-center">Popular Grape Varieties</div><br>
+      <div class="row">
+        <div class="col-md-3"></div>
+  
+        <div class="col-md-6">
+          <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/grape.jpg" class="d-block w-100" alt="first image">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </section>   
+    <section id="Postreview">
+      <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <!--One column in any screen device-->
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-header bg-primary text-white text-center h1" role="heading">
+              Posts by Members
+            </div>
+            <hr/>
+            <div class="text-center h2" id="header"></div>
+            <div class="text-center">
+              <table class="table table-striped">
+                <thead></thead>
+                <tbody class="text-center" role="listbox"></tbody>
+              </table>
+              <!--div class="btn-group" role="group" aria-label="Member Page">
+                 <a class="btn btn-primary" href="/postMessage">Post A message</a>
+              </div-->
+            </div>
+            <br />
+            <hr />
+            <form class="row bg-secondary" action="addPost" method="post">
+              <fieldset>
+                <legend class="text-center text-white h2">Post a Message</legend>
+                <div>
+                  <label for="topic" class="form-label h4">Topic</label>
+                  <select data-val="true" name="topic" id="topic" class="form-select" aria-label="Default select">
+                    <option selected>Select a topic</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Networking">Networking</option>
+                    <option value="Security">Security</option>
+                    <option value="General">General</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="message" class="form-label h4">Message</label>
+                  <textarea id="message" name="message" class="form-control" rows="5" placeholder="Type your message"  maxlength="280" minlength="10"></textarea>
+                </div>
+                <div>
+                  <label for="postedBy" class="form-label h4">Posted By</label>
+                  <input type="text" name="postedBy" id="postedBy" class="form-control"/>
+                </div>             
+                <div>   
+                  <div class="card-footer text-center">           
+                    <div class="btn-group" role="group" aria-label="Post Page">
+                      <button type="reset" class="btn btn-danger" >Clear</button>
+                      <button type="submit" class="btn btn-warning" >Submit</a>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-1"> </div>
+      </div>
+    </section>
+    <section id="Manage Content">
+      <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <!--One column in any screen device-->
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-header bg-primary text-white text-center h2" role="heading">
+              Manage Content
+            </div>
+            <div class="card-body">              
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam amet ipsum ipsa, distinctio ducimus voluptate voluptatum sed impedit nulla necessitatibus! Rerum delectus quaerat dolores illo quam id quasi rem modi.
+              </div>
+          </div>
+        </div>
+        <div class="col-md-1"> </div>
+      </div>
+    </section>
+    <section id="Register">
+      <div class="card">
+        <div class="card-header bg-info text-white text-center h2" role="heading">
+            Sign Up
+        </div>
+        <div class="card-body text-white h5" >
+            <form class="row g-3">
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control-plaintext" name="email"
+                            placeholder="email@example.com" required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" minlength="8"
+                            maxlength="30">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="confirm" class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="confirm" name="confirm" minlength="8"
+                            maxlength="30">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                  <div class="alert alert-warning h3" name="error"></div>
+                  </div>
+
+                <div class="input-group mb-3">
+                 
+                    <div class="btn-group btn-lg text-white h4 text-end" role="group" aria-label="authentication">
+                        <button type="reset" class="btn btn-info text-end">Clear</button>
+                        <button type="submit" class="btn btn-primary text-end" id="signup">Sign up</button>
+                    </div>
+            </form>
+        </div>
+        </div>
+    </section>
+    <section id="Login">
+      <div class="card">
+        <div class="card-header bg-info text-white text-center h2" role="heading">
+         Sign In
+        </div>
+        <div class="card-body text-white h5">
+          <form class="row g-3">
+          <div class="mb-3 row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control-plaintext" name="email" placeholder="email@example.com" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" name="password" minlength="8" maxlength="30">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <!-- <label class="col-sm-12 col-form-label" id="error1"></label> -->
+            <div class="alert alert-warning h3" name="error"></div>
+          </div>        
+          <div class="input-group mb-3">
+            <div class="btn-group btn-lg text-white h4 text-end" role="group" aria-label="authentication">
+            <button type="reset" class="btn btn-info text-end">Clear</button>
+            <button type="submit" class="btn btn-primary text-end" id="signin">Sign in</button>
+           </div>
+        </form>
+      </div>
+      </div>
+    </section>
+    <section id="About">
+      <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <!--One column in any screen device-->
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-header bg-primary text-white text-center h2" role="heading">
+              Full Stack Web Development I (CPSC 2600)
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>
+                <h4>
+                  Students explore web application development concepts and practices, including common
+                  full-stack architectures, server-side scripting languages and frameworks, and databases.
+                  Students learn the basics of server side-scripting and build a basic web application
+                  using contemporary languages, libraries, and frameworks.
+                </h4>
+                </p>
+                <hr>
+                <footer class="blockquote-footer">
+                  Langara College (<cite title="CPSC 2600"><a
+                      href="https://langara.ca/programs-and-courses/courses/CPSC/2600.html">CPSC 2600
+                      Course
+                      Description</a></cite>)
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"> </div>
+      </div>
+    </section>
+    <section id="404">
+      <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <!--One column in any screen device-->
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>
+                <h4>
+                  File not found
+                </h4>
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"> </div>
+      </div>
+    </section>
+    <div class="h4 text-center">
+      <hr>
+      <br />
+      <footer id="footer">
+        <span class="h5">Follow Us</span>&nbsp;&nbsp;
+        <button class="btn btn-danger">
+          <a href="https://www.youtube.com" class="text-white"><i class="bi bi-youtube h5" arria-label="youtube"></i></a></button>&nbsp;
+        <button class="btn btn-primary">
+          <a href="https://www.twitter.com" class="text-white"><i class="bi bi-twitter h5" aria-label="twitter"></i></a></button>&nbsp;
+        <button class="btn btn-success">
+          <a href="https://www.whatsapp.com/" class="text-white">&nbsp;<i class="bi bi-whatsapp h5" aria-label="whatsapp"></i>&nbsp;</a></button>&nbsp;
+        <button class="btn btn-warning">
+          <a href="https://www.instagram.com/" class="text-white"><i class="bi bi-instagram h5" aria-label="instagram"></i></a>
+        </button> <br> <br>
+        <div class="text-white h5">
+          <kbd> &copy; <span></span> Sunny & Ronald Wine Review. All Rights Reserved. </kbd>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+ 
+</body>
+
+</html>
