@@ -1,0 +1,302 @@
+{
+    "Argentina":[
+        "Mendoza Province",
+        "Other"
+    ],
+    "Australia":[
+        "Australia Other",
+        "New South Wales",
+        "South Australia",
+        "Tasmania",
+        "Victoria",
+        "Western Australia"
+    ],
+    "Austria":[
+        "Austria",
+        "Burgenland",
+        "Carnuntum",
+        "Eisenberg",
+        "Kamptal",
+        "Kremstal",
+        "Leithaberg",
+        "Mittelburgenland",
+        "Neusiedlersee",
+        "Niederösterreich",
+        "Steiermark",
+        "Südburgenland",
+        "Südoststeiermark",
+        "Südsteiermark",
+        "Thermenregion",
+        "Vienna",
+        "Wachau",
+        "Wagram",
+        "Wagram-Donauland",
+        "Weinland Österreich",
+        "Weinviertel",
+        "Wiener Gemischter Satz",
+        "Österreichischer Perlwein",
+        "Österreichischer Sekt"
+    ],
+    "Brazil":[
+        "Santa Catarina",
+        "Serra Gaúcha",
+        "Vale Trentino",
+        "Vale dos Vinhedos"
+    ],
+    "Bulgaria":[
+        "Bulgaria",
+        "Danube River Plains",
+        "Thracian Valley"
+    ],
+    "Canada":[
+        "British Columbia",
+        "Ontario"
+    ],
+    "Chile":[
+        "Aconcagua Costa",
+        "Aconcagua Valley",
+        "Apalta",
+        "Buin",
+        "Bío Bío Valley",
+        "Cachapoal Valley",
+        "Casablanca & Leyda Valleys",
+        "Casablanca Valley",
+        "Central Valley",
+        "Chile",
+        "Colchagua Costa",
+        "Colchagua Valley",
+        "Curicó Valley",
+        "Elqui Valley",
+        "Itata Valley",
+        "Leyda Valley",
+        "Limarí Valley",
+        "Lolol Valley",
+        "Loncomilla Valley",
+        "Lontué Valley",
+        "Maipo Valley",
+        "Marchigue",
+        "Maule Valley",
+        "Peumo",
+        "Pirque",
+        "Puente Alto",
+        "Rapel Valley",
+        "Sagrada Familia",
+        "San Antonio",
+        "Santa Cruz"
+    ],
+    "China":[
+        "China"
+    ],
+    "Croatia":[
+        "Istria"
+    ],
+    "Czech Republic":[
+        "Moravia"
+    ],
+    "England":[
+        "England"
+    ],
+    "France":[
+        "Alsace",
+        "Beaujolais",
+        "Bordeaux",
+        "Burgundy",
+        "Champagne",
+        "France Other",
+        "Languedoc-Roussillon",
+        "Loire Valley",
+        "Provence",
+        "Rhône Valley",
+        "Southwest France"
+    ],
+    "Georgia":[
+        "Georgia",
+        "Kakheti"
+    ],
+    "Germany":[
+        "Baden",
+        "Germany",
+        "Mosel",
+        "Mosel-Saar-Ruwer",
+        "Nahe",
+        "Pfalz",
+        "Rheingau",
+        "Rheinhessen",
+        "Württemberg"
+    ],
+    "Greece":[
+        "Achaia",
+        "Amyndeon",
+        "Atalanti Valley",
+        "Cephalonia",
+        "Corinth",
+        "Drama",
+        "Epanomi",
+        "Letrinon",
+        "Macedonia",
+        "Mantinia",
+        "Mount Athos",
+        "Muscat of Kefallonian",
+        "Nemea",
+        "Pangeon",
+        "Peloponnese",
+        "Santorini",
+        "Thessalikos"
+    ],
+    "Hungary":[
+        "Eger",
+        "Hungary",
+        "Tokaj",
+        "Tokaji",
+        "Villány"
+    ],
+    "India":[
+        "Nashik"
+    ],
+    "Israel":[
+        "Galilee",
+        "Israel",
+        "Jerusalem Hills",
+        "Judean Hills",
+        "Samson",
+        "Shomron",
+        "Upper Galilee"
+    ],
+    "Italy":[
+        "Central Italy",
+        "Italy Other",
+        "Lombardy",
+        "Northeastern Italy",
+        "Northwestern Italy",
+        "Piedmont",
+        "Sicily & Sardinia",
+        "Southern Italy",
+        "Tuscany",
+        "Veneto"
+    ],
+    "Lebanon":[
+        "Bekaa Valley",
+        "Lebanon"
+    ],
+    "Mexico":[
+        "Valle de Guadalupe"
+    ],
+    "Moldova":[
+        "Codru Region",
+        "Moldova"
+    ],
+    "New Zealand":[
+        "Awatere Valley",
+        "Canterbury",
+        "Central Otago",
+        "Hawke's Bay",
+        "Kumeu",
+        "Marlborough",
+        "Martinborough",
+        "Nelson",
+        "New Zealand",
+        "South Island",
+        "Waiheke Island",
+        "Waipara",
+        "Waipara Valley",
+        "Wairarapa"
+    ],
+    "Portugal":[
+        "Alentejano",
+        "Alentejo",
+        "Bairrada",
+        "Beira Interior",
+        "Bucelas",
+        "Colares",
+        "Douro",
+        "Duriense",
+        "Dão",
+        "Estremadura",
+        "Lisboa",
+        "Madeira",
+        "Moscatel do Douro",
+        "Obidos",
+        "Palmela",
+        "Península de Setúbal",
+        "Port",
+        "Portuguese Table Wine",
+        "Setubal",
+        "Tejo",
+        "Vinho Verde"
+    ],
+    "Romania":[
+        "Dealu Mare",
+        "Murfatlar",
+        "Viile Timisului"
+    ],
+    "Serbia":[
+        "Fruška Gora"
+    ],
+    "Slovenia":[
+        "Brda",
+        "Goriska Brda",
+        "Vipavska Dolina"
+    ],
+    "South Africa":[
+        "Coastal Region",
+        "Constantia",
+        "Elgin",
+        "Franschhoek",
+        "Hemel en Aarde",
+        "Malgas",
+        "Overberg",
+        "Paarl",
+        "Philadelphia",
+        "Robertson",
+        "Simonsberg-Stellenbosch",
+        "Stellenbosch",
+        "Swartland",
+        "Walker Bay",
+        "Wellington",
+        "Western Cape"
+    ],
+    "Spain":[
+        "Andalucia",
+        "Catalonia",
+        "Central Spain",
+        "Galicia",
+        "Levante",
+        "Northern Spain",
+        "Spain Other",
+        "Spanish Islands"
+    ],
+    "Turkey":[
+        "Aegean",
+        "Ankara",
+        "Turkey"
+    ],
+    "US":[
+        "America",
+        "Arizona",
+        "California",
+        "Colorado",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Iowa",
+        "Massachusetts",
+        "Michigan",
+        "Missouri",
+        "Nevada",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "Ohio",
+        "Oregon",
+        "Texas",
+        "Virginia",
+        "Washington"
+    ],
+    "Ukraine":[
+        "Ukraine"
+    ],
+    "Uruguay":[
+        "Uruguay"
+    ]
+}
