@@ -24,7 +24,6 @@
         return data
     }
     const populateCountries = async() =>{
-        //const data = await postData('/region', {})
         const data = await getJSONData('/countries')
         let dropdown = document.getElementById("country")
         for (let i = 0; i < Object.keys(data).length; ++i) {
@@ -38,12 +37,7 @@
     const populateRegions = async() =>{
         let i = document.getElementById("country").value
         console.log(country)
-        //const data = await postData('/region', {})
         const data = await getJSONData('/countries')
-        //console.log(reply)
-        /*const data = await getJSONData(config.REGIONS) //`./../views/data/regions.json`*/
-        //console.log(i)
-        //console.log(data[i].length)
         let dropdown = document.getElementById("region")
         dropdown.innerHTML = ''
         for (let j = 0; j < data[i].length; ++j) {
@@ -56,6 +50,7 @@
 
     const showmembers = async() =>{
         const posts = await getJSONData('/posts')
+        console.log("hello")
         console.log(posts)
     }
 
@@ -107,7 +102,6 @@
             div_a.appendChild(div_b)
             var img = document.createElement("img")
             img.className = "d-block w-100"
-            //img.src = `/img/${data[i]['name'].replace(/ /g, '')}.jpg`
             img.src = data[i]['link']
             div_a.appendChild(img)
             var span = document.createElement("span")
@@ -165,7 +159,7 @@
                 window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
                 displaySection(navigation.wines)
                 authorize(true)
-                document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}!`
+                document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
             }
         }
         else {
