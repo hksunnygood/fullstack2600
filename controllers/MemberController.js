@@ -10,9 +10,9 @@ const memberController = express.Router()
 let members = []
 let authenticated = []
 memberController.post('/signup', async (request, response) => {
-    //let collection = client.db().collection('members')
-    //members = await util.find(collection, {})
-    ///console.log('MongoDB Members', members)
+    let collection = client.db().collection('Members')
+    members = await util.find(collection, {})
+    console.log('MongoDB Members', members)
     console.info(`\t|Inside app.post('/signup')`)
     const { email, password } = request.body
     console.log(`\t|Password = ${password}`)
@@ -27,8 +27,8 @@ memberController.post('/signup', async (request, response) => {
         members.push(member)
         console.info(members)
         authenticated.push(email)
-        //util.insertOne(collection, members[members.length - 1])
-        utils.saveJson(config.MEMBERS, JSON.stringify(members))
+        util.insertOne(collection, member)
+        //utils.saveJson(config.MEMBERS, JSON.stringify(members))
         response
             .status(200)
             .json({
@@ -52,9 +52,9 @@ memberController.get('/posts', util.logRequest, async (req, res, next) => {
 })
 
 memberController.post('/signin', async (request, response) => {
-    //let collection = client.db().collection('members')
-    //members = await util.find(collection, {})
-    ///console.log('MongoDB Members', members)
+    let collection = client.db().collection('Members')
+    members = await util.find(collection, {})
+    console.log('MongoDB Members', members)
     console.info(`\t|Inside app.post('/signin')`)
     const { email, password } = request.body
     if (members.length === 0)
