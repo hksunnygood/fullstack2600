@@ -25,11 +25,15 @@
     }
     const populateCountries = async() =>{
         const data = await getJSONData('/countries')
-        let dropdown = document.getElementById("country")
+        let dropdown1 = document.getElementById("country")
+        let dropdown2 = document.getElementById("country2")
         for (let i = 0; i < Object.keys(data).length; ++i) {
-            let option = document.createElement("option")
-            option.text = Object.keys(data)[i]
-            dropdown.add(option)
+            let option1 = document.createElement("option")
+            let option2 = document.createElement("option")
+            option1.text = Object.keys(data)[i]
+            option2.text = Object.keys(data)[i]
+            dropdown1.add(option1)
+            dropdown2.add(option2)
         }
         
     }
@@ -220,18 +224,23 @@
         console.log(email, password, confirm)
 
         if (password == confirm) {
-            const reply = await postData('/signup', { email, password })
-            if (reply.error) {
-                registerWarning.innerHTML = `${reply.error}`
+            if (password.length < 6){
+                registerWarning.innerHTML = 'Password needs to be at least 6 chars!'
                 show(registerWarning)
-            }
-            else if (reply.success) {
-                console.log(reply, reply)
-                window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
-                displaySection(navigation.wines)
-                authorize(true)
-                document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
-                document.getElementById('postedBy').setAttribute('value', email)
+            } else {
+                const reply = await postData('/signup', { email, password })
+                if (reply.error) {
+                    registerWarning.innerHTML = `${reply.error}`
+                    show(registerWarning)
+                }
+                else if (reply.success) {
+                    console.log(reply, reply)
+                    window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
+                    displaySection(navigation.wines)
+                    authorize(true)
+                    document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
+                    document.getElementById('postedBy').setAttribute('value', email)
+                }
             }
         }
         else {
@@ -334,6 +343,7 @@
             if (page) {
                 event.preventDefault()
                 displayReviews()
+                hide(registerWarning)
                 window.history.pushState(navigation[page], "", `/${navigation[page].url}`)
                 displaySection(navigation[page])
             }

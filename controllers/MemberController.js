@@ -57,7 +57,21 @@ memberController.post('/signup', async (request, response) => {
         members = utils.readJson(config.MEMBERS)
     //console.log(members)
     const isMember = members.filter((m) => m.email === email)[0]
-    if (!isMember) {
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    if (email == '' || password ==''){
+        response
+            .status(200)
+            .json({ error: `email and password cannot be empty!` })
+    } else if (!email.match(regex)){
+        response
+            .status(200)
+            .json({ error: `Email address format is incorrect.` })
+    } else if (isMember) {
+        response
+            .status(200)
+            .json({ error: `${email} already exists. Choose a different email` })
+        
+    } else {
         members.push(member)
         console.info(members)
         authenticated.push(email)
@@ -71,10 +85,6 @@ memberController.post('/signup', async (request, response) => {
                     message: `${email} was added successfuly to members.`,
                 },
             })
-    } else {
-        response
-            .status(200)
-            .json({ error: `${email} already exists. Choose a different email` })
     }
 })
 memberController.get('/reviews', util.logRequest, async (req, res, next) => {
