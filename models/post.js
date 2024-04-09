@@ -1,9 +1,10 @@
 (() => {
-const Post = (topic, message, user) => {
+const Post = (user, wine, country, message) => {
     return {
-        Topic: topic,
-        Message: message,
         postedBy: user,
+        wine: wine,
+        country: country,
+        message: message,
         postedAt: new Date().toUTCString()
     }
 }

@@ -5,7 +5,7 @@
         about: { title: "About Page", url: "About", section: "About" },
         wines: { title: "Member Page", url: "Member/Wines", section: "Wines" },
         grape: { title: "Member Page", url: "Member/Grapes", section: "Grapes" },
-        postreview: { title: "Member Page", url: "Member/PostReview", section: "Postreview" },
+        postreview: { title: "Member Page", url: "PostReview", section: "Postreview" },
         //content: { title: "Admin Page", url: "Admin/Content", section: "Manage Content" },
         register: { title: "Register Page", url: "Account/Register", section: "Register" },
         login: { title: "Login Page", url: "Account/Login", section: "Login" }
@@ -62,11 +62,11 @@
         let i = 1
         let num = data.length
 
-        document.querySelector("thead").innerHTML = `<tr><th class="h2">#</th><th class="h2">Wines Recommend</th></tr>`
-        document.querySelector("tbody").innerHTML = ''
+        document.querySelectorAll("thead")[0].innerHTML = `<tr><th class="h2">#</th><th class="h2">Wines Recommend</th></tr>`
+        document.querySelectorAll("tbody")[0].innerHTML = ''
         for (let j = 0; j < num; ++j) {
             if(data[j]['province'] === region){
-                let tbody = document.querySelector('tbody')
+                let tbody = document.querySelectorAll('tbody')[0]
                 var tr = document.createElement('tr')
                 tr.innerHTML = `<td><kbd>${i}</kbd></td><td><ul><li>Name: ${data[j]['title']}</li><li>Winery: ${data[j]['winery']}</li><li>Grapes: ${data[j]['variety']}</li><li>Region: ${data[j]['region_1']}</li><li>Rating: ${data[j]['points']}</li><li>Price :$${data[j]['price']}</li><li>Description: ${data[j]['description']}</li></ul></td>`
                 i++
@@ -111,6 +111,34 @@
         }
     }
 
+    const displayReviews = async () => {
+        const reviews = await getJSONData('/reviews')
+        console.log("yeah")
+        console.log(reviews)
+        document.getElementById('successmsg').innerHTML = ''
+        if(reviews.length > 0) {
+            let thead = document.querySelectorAll("thead")[1]
+            thead.innerHTML =''
+            let tbody = document.querySelectorAll("tbody")[1]
+            tbody.innerHTML = ''
+            let tr = document.createElement('tr')
+            tr.setAttribute('class', 'text-center h3')
+            tr.innerHTML = '<th>#</th><th>Reviews</th>'
+            thead.appendChild(tr)
+            for (let i = 0; i < reviews.length; i++) {
+                let tr = document.createElement('tr')
+                tr.setAttribute('class', 'text-start')
+                tr.innerHTML = `<td><kbd>${i+1}</kbd></td><td><ul><li><strong>Post by: </strong>${reviews[i]['postedBy'].split("@")[0]}</li><li><strong>Wine: </strong>${reviews[i]['wine']}</li><li><strong>Country: </strong>${reviews[i]['country']}</li><li><strong>Review: </strong><i>${reviews[i]['message']}</i></li><li><strong>Date: </strong>${reviews[i]['postedAt']}</li></ul></td>`
+                tbody.appendChild(tr)
+            } 
+
+        } else{
+            console.info(`Posts collection is empty`)
+        }
+        //let d = await document.getElementById('postedBy').setAttribute('value', email)
+        //console.log(d)
+    }
+
     const postData = async (url = '', data = {}) => {
         console.log("url", url)
         // Default options are marked with *
@@ -140,6 +168,49 @@
      *  
      */
     //----------------------------------------------------
+
+    const postreview = async (event) => {
+        // prevent refreshing the page
+        event.preventDefault()
+        //email = document.querySelector('#Register input[name="email"]').value
+        let wine = document.getElementById('wine').value
+        let country = document.getElementById('country2').value
+        let message = document.getElementById('message').value
+        //console.log(email, password, confirm)
+        const reply = await postData('/addReview2', { email,wine,country,message })
+        //displayReviews()
+        /*let msg = document.getElementById('successmsg')
+        msg.setAttribute('class','h3 text-danger')
+        msg.innerHTML = "Review message added successfully."*/
+        alert("Review message added successfully.")
+        displayReviews()
+        document.getElementById('reviewform').reset()
+        window.history.pushState(navigation.postreview, "", `/${navigation.postreview.url}`)
+        displaySection(navigation.postreview)
+        //window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
+        //displaySection(navigation.wines)
+
+        //if (password == confirm) {
+        //    const reply = await postData('/signup', { email, password })
+            /*if (reply.error) {
+                registerWarning.innerHTML = `${reply.error}`
+                show(registerWarning)
+            }
+            else if (reply.success) {
+                console.log(reply, reply)
+                window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
+                displaySection(navigation.wines)
+                authorize(true)
+                document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
+                document.getElementById('postedBy').setAttribute('value', email)
+            }
+        }
+        else {
+            registerWarning.innerHTML = 'Passwords do not match. Re-enter your password'
+            show(registerWarning)
+        }*/
+    }
+
     const signup = async (event) => {
         // prevent refreshing the page
         event.preventDefault()
@@ -160,6 +231,7 @@
                 displaySection(navigation.wines)
                 authorize(true)
                 document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
+                document.getElementById('postedBy').setAttribute('value', email)
             }
         }
         else {
@@ -250,15 +322,18 @@
         displaySection(navigation.home)
         window.history.replaceState(navigation.home, "", document.location.href);
         setCopyrightYear()
-        showmembers()
+        //showmembers()
         populateCountries()
+        //displayReviews()
         document.querySelector('#country').onchange = populateRegions
         document.getElementById('region').onchange = displayWines
         //c1.onchange = () => populateRegions()
         document.onclick = (event) => {
             const page = event.target.getAttribute('data-page')
+            console.log('this is page:'+page)
             if (page) {
                 event.preventDefault()
+                displayReviews()
                 window.history.pushState(navigation[page], "", `/${navigation[page].url}`)
                 displaySection(navigation[page])
             }
@@ -278,6 +353,7 @@
         document.querySelector("#signup").onclick = signup
         document.querySelector("#signout").onclick = signout
         document.querySelector("#signin").onclick = signin
+        document.querySelector("#post_review").onclick = postreview
 
     })
     //----------------------------------------------------

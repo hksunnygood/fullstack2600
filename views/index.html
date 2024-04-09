@@ -162,7 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="text-center h2" id="header">
+      <div class="text-center h2">
       </div>
       <div class="text-center">
         <table class="table table-striped">
@@ -228,37 +228,36 @@
             </div>
             <br />
             <hr />
-            <form class="row bg-secondary" action="addPost" method="post">
+            <form class="row bg-secondary" id="reviewform"> <!--action="addReview" method="post"-->
               <fieldset>
-                <legend class="text-center text-white h2">Post a Message</legend>
+                <legend class="text-center text-white h2">Post a Review Message</legend>
                 <div>
-                  <label for="topic" class="form-label h4">Topic</label>
-                  <select data-val="true" name="topic" id="topic" class="form-select" aria-label="Default select">
-                    <option selected>Select a topic</option>
-                    <option value="Programming">Programming</option>
-                    <option value="Networking">Networking</option>
-                    <option value="Security">Security</option>
-                    <option value="General">General</option>
-                  </select>
+                  <!--label for="postedBy" class="form-label h4">Post By</label-->
+                  <input type="hidden" name="postedBy" id="postedBy" value="yes" class="form-control"/>
+                </div>
+                <div>
+                  <label for="wine" class="form-label h4">Wine</label>
+                  <input type="text" name="wine" id="wine" class="form-control"/>
+                </div>
+                <div>
+                  <label for="country" class="form-label h4">Country</label>
+                  <input type="text" name="country" id="country2" class="form-control"/>
                 </div>
                 <div>
                   <label for="message" class="form-label h4">Message</label>
                   <textarea id="message" name="message" class="form-control" rows="5" placeholder="Type your message"  maxlength="280" minlength="10"></textarea>
-                </div>
-                <div>
-                  <label for="postedBy" class="form-label h4">Posted By</label>
-                  <input type="text" name="postedBy" id="postedBy" class="form-control"/>
-                </div>             
+                </div>            
                 <div>   
                   <div class="card-footer text-center">           
                     <div class="btn-group" role="group" aria-label="Post Page">
                       <button type="reset" class="btn btn-danger" >Clear</button>
-                      <button type="submit" class="btn btn-warning" >Submit</a>
+                      <button type="submit" id="post_review" class="btn btn-warning" >Submit</a>
                     </div>
                   </div>
                 </div>
               </fieldset>
             </form>
+            <span id="successmsg"></span>
           </div>
         </div>
         <div class="col-md-1"> </div>
