@@ -104,6 +104,7 @@
         getMongoClient: getMongoClient,
         logRequest: logRequest,
         find: find,
+        deleteOne: deleteOne,
         insertOne: insertOne,
         insertMany: insertMany,
     }

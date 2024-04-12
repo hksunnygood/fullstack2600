@@ -2,7 +2,6 @@
     console.log(`current directory is ${__dirname}`)
     const homeController = require(`${__dirname}/../controllers/HomeController`)
     const memberController = require(`${__dirname}/../controllers/MemberController`) 
-    //const regionController = require(`${__dirname}/../controllers/RegionController`) 
     const grapeController = require(`${__dirname}/../controllers/GrapeController`) 
     const config = require(`${__dirname}/config/config`)
     const utils = require(`${__dirname}/utils`)
@@ -28,7 +27,6 @@
     })
     app.use(homeController)
     app.use(memberController)   
-    //app.use(regionController)   
     app.use(grapeController)   
 
     app.get('/wines', async(request, response) => {
@@ -36,18 +34,6 @@
             wines = await getJSONData(config.API_URL)
         response.status(200).json(wines)
     })
-
-    /*app.get('/grapes', async(request, response) => {
-        if (!grapes)
-            grapes = await getJSONData(config.GRAPES)
-        response.status(200).json(grapes)
-    })*/
-
-    /*app.get('/grapes', async(request, response) => {
-        if (!grapes)
-            grapes = await utils.readJson(config.GRAPES)
-        response.status(200).json(grapes)
-    })*/
 
     app.get('/countries', async(request, response) => {
         if (!countries)

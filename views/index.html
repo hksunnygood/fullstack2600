@@ -15,7 +15,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid" role="banner">
-          <img src="img/logo.png" width="50" height="50">&nbsp;
+          <img src="img/logo.png" width="50" height="50">&nbsp;&nbsp;
           <a class="navbar-brand 2">Wine Review</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"cdata-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,18 +47,21 @@
                   </li>
                 </ul>
               </li>
+              <li class="nav-item ml-4" admin-authenticated>
+                <a class="nav-link btn btn-outline-primary" data-page="admin">Admin</a>
+              </li>
               <li class="nav-item ml-4">
                 <a class="nav-link btn btn-outline-primary" data-page="about">About</a>
               </li>
             </ul>
-            <form class="d-flex text-end h3 text-white" >
+            <form class="d-flex text-end text-white" >
               <div data-nonAuthenticated>
                 <a data-page ="register"  class="btn btn-outline-primary" >register</a>
                 <a data-page="login" class="btn btn-outline-primary">login</a>
               </div>              
-              <div data-authenticated><img src="img/person.png" alt="person" width="30">&nbsp;<span class="h5 text-white"></span><button class="btn btn-info text-end" id="signout">Logout</button></div> 
+              <div data-authenticated><img src="img/person.png" alt="person" width="30">&nbsp;<span class="h5 text-white"></span><button class="btn btn-info text-end" id="signout1">Logout</button></div> 
+              <div admin-authenticated><img src="img/person.png" alt="person" width="30">&nbsp;<span class="h5 text-white"></span><button class="btn btn-info text-end" id="signout2">Logout</button></div>
             </form>
-              <!--/ul-->
           </div>
         </div>
       </nav>
@@ -92,7 +95,6 @@
                     </div>
                     <input type="text" class="form-control" aria-label="I agree to terms & conditions" value="I agree" disabled>
                   </div>
-            <!--/div-->
                   <form method="dialog" class="text-center">
                     <button class="btn btn-lg btn-info" id="noticeButton">OK</button>
                   </form>
@@ -104,25 +106,24 @@
         </div>
       </div>
     </dialog>
-    <!--hr-->
+
     <section id="Home">
       <div class="container-fluid m-0 p-0">
-      <img src="img/home_hero.jpg" width="100%"></div><hr>
+        <img src="img/home_hero.jpg" width="100%">
+      </div><hr>
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="card">
             <div class="card-header bg-primary text-white text-center h3" role="heading">
-              Wine
+              Grapes
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
                 <p>
-                  Wine is about so much more than just a great label; it’s about an experience and community and, of course, what’s in the bottle. 
-                  That’s where SR comes in. We uses crowd-sourced data to personalize wine recommendations so that every community member feels 
-                  confident about their wine choices. Created for everyone who likes wine—from the wine curious to the wine enthusiast.<br>
+                  Grapes are unique among fruits. Ripe, they contain sufficient sugar and an appropriate amount of acid so that when they ferment enough alcohol is produced to make a palatable wine that is protected against imminent spoilage. Other fruits do not possess the proper balance of these basic constituents.<br>
                 </p>
                 <hr>
-                <footer class="blockquote-footer">Sunny & Ronald<sup>®</sup></footer>
+                <footer class="blockquote-footer">Dr. SD Skikhamany & Dr B Srinivasulu</footer>
               </blockquote>
             </div>
           </div>
@@ -130,17 +131,16 @@
         <div class="col-md-6 col-sm-12">
           <div class="card">
             <div class="card-header bg-primary text-white text-center h3" role="heading">
-              Our Vision
+              Wines
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
-                <p>There is nothing complicated about our vision.  We just want to create delicious products and imagine the great 
-                  places and events where our customers are enjoying a fine cocktail.<br>
-                  Web APIs are typically used with JavaScript, although this doesn't always have to be the case.
+                <p>We, here, provide 10,000 wines recommendations from around the world which are tasted by professionals. All our members can provide additional reviews exclusively in our website.<br>
+                  SR wine review primarily serves a national audience, and we therefore prefer to review wines that are widely available.
                 </p>
                 <hr>
                 <footer class="blockquote-footer">
-                  Mozilla Developer Network (<cite title="Source Title">MDN</cite>)
+                  Sunny and Ronald
                 </footer>
               </blockquote>
             </div>
@@ -148,10 +148,12 @@
         </div>
       </div>
     </section>
+
     <section id="Wines">
       <div class="container-fluid m-0 p-0">
-        <img src="img/wine_hero.jpg" width="100%"></div><hr>
-      <!--div class="h1 text-center">Popular wines in the regions</div--><br>
+        <img src="img/wine_hero.jpg" width="100%">
+      </div><hr>
+      <br>
       <div class="row">
         <div class="col-sm-6">
           <div class="card">
@@ -166,21 +168,21 @@
           </div>
         </div>
       </div>
-      <div class="text-center h2">
-      </div>
+      <hr>
       <div class="text-center">
         <table class="table table-striped">
           <thead>
-
           </thead>
           <tbody id="info" class="text-start" role="listbox">
           </tbody>
         </table>
       </div>
     </section>
+
     <section id="Grapes">
       <div class="container-fluid m-0 p-0">
-        <img src="img/grape_hero.jpg" width="100%"></div><hr>
+        <img src="img/grape_hero.jpg" width="100%">
+      </div><hr>
       <div class="h1 text-center">Popular Grape Varieties</div><br>
       <div class="row">
         <div class="col-md-3"></div>
@@ -195,13 +197,11 @@
                 <img src="img/grape.jpg" class="d-block w-100" alt="first image">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
@@ -210,38 +210,29 @@
         <div class="col-md-3"></div>
       </div>
     </section>   
+
     <section id="Postreview">
       <div class="container-fluid m-0 p-0">
-        <img src="img/review_hero.jpg" width="100%"></div><hr>
+        <img src="img/review_hero.jpg" width="100%">
+      </div><hr>
       <div class="row">
-        <div class="col-md-1">
-
-        </div>
+        <div class="col-md-1"></div>
         <!--One column in any screen device-->
         <div class="col-md-10">
           <div class="card">
-            <!--div class="card-header bg-primary text-white text-center h1" role="heading">
-              Posts by Members
-            </div-->
-            <hr/>
-            <div class="text-center h2" id="header"></div>
             <div class="text-center">
               <table class="table table-striped">
                 <thead></thead>
                 <tbody class="text-center" role="listbox"></tbody>
               </table>
-              <!--div class="btn-group" role="group" aria-label="Member Page">
-                 <a class="btn btn-primary" href="/postMessage">Post A message</a>
-              </div-->
             </div>
             <br />
             <hr />
-            <form class="row bg-secondary" id="reviewform"> <!--action="addReview" method="post"-->
+            <form class="row bg-secondary" id="reviewform">
               <fieldset>
                 <legend class="text-center text-white h2">Post a Review Message</legend>
                 <div>
-                  <!--label for="postedBy" class="form-label h4">Post By</label-->
-                  <input type="hidden" name="postedBy" id="postedBy" value="yes" class="form-control"/>
+                  <input type="hidden" name="postedBy" id="postedBy" value="" class="form-control"/>
                 </div>
                 <div>
                   <label for="wine" class="form-label h4">Wine</label>
@@ -259,141 +250,136 @@
                   <div class="card-footer text-center">           
                     <div class="btn-group" role="group" aria-label="Post Page">
                       <button type="reset" class="btn btn-danger" >Clear</button>
-                      <button type="submit" id="post_review" class="btn btn-warning" >Submit</a>
+                      <button type="submit" id="post_review" class="btn btn-warning" >Submit</button>
                     </div>
                   </div>
                 </div>
               </fieldset>
             </form>
-            <span id="successmsg"></span>
           </div>
         </div>
         <div class="col-md-1"> </div>
       </div>
     </section>
-    <section id="Manage Content">
-      <div class="row">
-        <div class="col-md-1">
 
-        </div>
-        <!--One column in any screen device-->
-        <div class="col-md-10">
-          <div class="card">
-            <div class="card-header bg-primary text-white text-center h2" role="heading">
-              Manage Content
-            </div>
-            <div class="card-body">              
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam amet ipsum ipsa, distinctio ducimus voluptate voluptatum sed impedit nulla necessitatibus! Rerum delectus quaerat dolores illo quam id quasi rem modi.
-              </div>
-          </div>
-        </div>
-        <div class="col-md-1"> </div>
-      </div>
-    </section>
     <section id="Register">
       <div class="container-fluid m-0 p-0">
-        <img src="img/signup_hero.jpg" width="100%"></div><hr>
+        <img src="img/signup_hero.jpg" width="100%">
+      </div><hr>
       <div class="card">
-        <!--div class="card-header bg-info text-white text-center h2" role="heading">
-            Sign Up
-        </div-->
         <div class="card-body text-white h5" >
-            <form class="row g-3">
-                <div class="mb-3 row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control-plaintext" name="email" placeholder="email@example.com" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="password" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" name="password" minlength="6" maxlength="30">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="confirm" class="col-sm-2 col-form-label">Confirm Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="confirm" name="confirm" minlength="6" maxlength="30">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                  <div class="alert alert-warning h3" name="error"></div>
-                  </div>
-
-                <div class="input-group mb-3">
-                 
-                    <div class="btn-group btn-lg text-white h4 text-end" role="group" aria-label="authentication">
-                        <button type="reset" class="btn btn-info text-end">Clear</button>
-                        <button type="submit" class="btn btn-primary text-end" id="signup">Sign up</button>
-                    </div>
-            </form>
+          <form class="row g-3">
+            <div class="mb-3 row">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" name="email" placeholder="email@example.com" required>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="password" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" minlength="6" maxlength="30">
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="confirm" class="col-sm-2 col-form-label">Confirm Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="confirm" name="confirm" minlength="6" maxlength="30">
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <div class="alert alert-warning h3" name="error"></div>
+            </div>
+            <div class="mb-3">                 
+              <div class="btn-group btn-lg text-white h4 text-end" role="group" aria-label="authentication">
+                <button type="reset" class="btn btn-info text-end">Clear</button>
+                <button type="submit" class="btn btn-primary text-end" id="signup">Sign up</button>
+              </div>
+            </div>
+          </form>
         </div>
-        </div>
+      </div>
     </section>
+
     <section id="Login">
       <div class="container-fluid m-0 p-0">
-        <img src="img/signin_hero.jpg" width="100%"></div><hr>
+        <img src="img/signin_hero.jpg" width="100%">
+      </div><hr>
       <div class="card">
-        <!--div class="card-header bg-info text-white text-center h2" role="heading">
-         Sign In
-        </div-->
         <div class="card-body text-white h5">
           <form class="row g-3">
-          <div class="mb-3 row">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control-plaintext" name="email" placeholder="email@example.com" required>
+            <div class="mb-3 row">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" name="email" placeholder="email@example.com" required>
+              </div>
             </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" name="password" minlength="8" maxlength="30">
+            <div class="mb-3 row">
+              <label for="password" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" minlength="8" maxlength="30">
+              </div>
             </div>
-          </div>
-          <div class="mb-3 row">
-            <!-- <label class="col-sm-12 col-form-label" id="error1"></label> -->
-            <div class="alert alert-warning h3" name="error"></div>
-          </div>        
-          <div class="input-group mb-3">
-            <div class="btn-group btn-lg text-white h4 text-end" role="group" aria-label="authentication">
-            <button type="reset" class="btn btn-info text-end">Clear</button>
-            <button type="submit" class="btn btn-primary text-end" id="signin">Sign in</button>
-           </div>
-        </form>
-      </div>
+            <div class="mb-3 row">
+              <div class="alert alert-warning h3" name="error"></div>
+            </div>        
+            <div class="mb-3">
+              <div class="btn-group btn-lg text-white h4 text-end" role="group" aria-label="authentication">
+                <button type="reset" class="btn btn-info text-end">Clear</button>
+                <button type="submit" class="btn btn-primary text-end" id="signin">Sign in</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
+
+    <section id="Admin">
+      <div class="container-fluid m-0 p-0">
+        <img src="img/admin_hero.jpg" width="100%">
+      </div><hr>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <!--One column in any screen device-->
+        <div class="col-md-10">
+          <div class="card">
+            <div class="text-center">
+              <table class="table table-striped">
+                <thead>
+                </thead>
+                <tbody id="info" class="text-start" role="listbox">
+                </tbody>
+              </table>
+              <button type="submit" id="savechange" class="btn btn-warning" >Save Change</button>
+            </div>
+          </div>
+        </div> 
+        <div class="col-md-1"></div>
+      </div>
+    </section>
+
     <section id="About">
       <div class="container-fluid m-0 p-0">
-        <img src="img/about_hero.jpg" width="100%"></div><hr>
+        <img src="img/about_hero.jpg" width="100%">
+      </div><hr>
       <div class="row">
-        <div class="col-md-1">
-
-        </div>
+        <div class="col-md-1"></div>
         <!--One column in any screen device-->
         <div class="col-md-10">
           <div class="card">
             <div class="card-header bg-primary text-white text-center h2" role="heading">
-              Full Stack Web Development I (CPSC 2600)
+              About Us
             </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
                 <p>
                 <h4>
-                  Students explore web application development concepts and practices, including common
-                  full-stack architectures, server-side scripting languages and frameworks, and databases.
-                  Students learn the basics of server side-scripting and build a basic web application
-                  using contemporary languages, libraries, and frameworks.
+                  There's nothing quite as joyful as a gathering of two wine enthusiasts. With this project in Full Stack Web Development, we have the opportunity to craft a website tailored to wine lovers worldwide. Our aim is to put into practice the skills and knowledge acquired throughout the course, encompassing front-end design, standard full-stack architecture, server-side scripting, and database management. We hope you'll find enjoyment and delight in exploring this project!
                 </h4>
                 </p>
                 <hr>
                 <footer class="blockquote-footer">
-                  Langara College (<cite title="CPSC 2600"><a
-                      href="https://langara.ca/programs-and-courses/courses/CPSC/2600.html">CPSC 2600
-                      Course
-                      Description</a></cite>)
+                  Ronald & Sunny (April 2024)
                 </footer>
               </blockquote>
             </div>
@@ -402,28 +388,7 @@
         <div class="col-md-1"> </div>
       </div>
     </section>
-    <section id="404">
-      <div class="row">
-        <div class="col-md-1">
 
-        </div>
-        <!--One column in any screen device-->
-        <div class="col-md-10">
-          <div class="card">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>
-                <h4>
-                  File not found
-                </h4>
-                </p>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-1"> </div>
-      </div>
-    </section>
     <div class="h4 text-center">
       <hr>
       <br />

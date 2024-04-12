@@ -6,7 +6,7 @@
         wines: { title: "Member Page", url: "Member/Wines", section: "Wines" },
         grape: { title: "Member Page", url: "Member/Grapes", section: "Grapes" },
         postreview: { title: "Member Page", url: "PostReview", section: "Postreview" },
-        //content: { title: "Admin Page", url: "Admin/Content", section: "Manage Content" },
+        admin: { title: "Admin Page", url: "Admin", section: "Admin" },
         register: { title: "Register Page", url: "Account/Register", section: "Register" },
         login: { title: "Login Page", url: "Account/Login", section: "Login" }
     }
@@ -35,54 +35,55 @@
             dropdown1.add(option1)
             dropdown2.add(option2)
         }
-        
     }
 
     const populateRegions = async() =>{
-        let i = document.getElementById("country").value
-        console.log(country)
+        let country = document.getElementById("country").value
         const data = await getJSONData('/countries')
         let dropdown = document.getElementById("region")
         dropdown.innerHTML = ''
-        for (let j = 0; j < data[i].length; ++j) {
+        for (let j = 0; j < data[country].length; j++) {
             let option = document.createElement("option")
-            option.text = data[i][j]
+            option.text = data[country][j]
             dropdown.add(option)
         }
-        
     }
 
-    const showmembers = async() =>{
-        const posts = await getJSONData('/posts')
-        console.log("hello")
-        console.log(posts)
+    const displayMembers = async() =>{
+        const data = await getJSONData('/members')
+        console.log(data)
+        document.querySelectorAll("thead")[2].innerHTML = `<tr class="table-dark"><th class="h2">#</th><th class="h2">Members Info</th><th>delete?</th></tr>`
+        document.querySelectorAll("tbody")[2].innerHTML = ''
+        for (let i = 0; i < data.length; i++) {
+            if(data[i]['role'] == 'member'){
+                let tbody = document.querySelectorAll('tbody')[2]
+                var tr = document.createElement('tr')
+                tr.innerHTML = `<td><kbd>${i}</kbd></td><td><ul><li>ID: ${data[i]['_id']}</li><li>Email: ${data[i]['email']}</li><li>PW(hashed): ${data[i]['hashedPassword']}</li><li>Registered at: ${data[i]['since']}</li></ul></td><td><input type="radio" id="member" name="member" value=${data[i]['email']}></td>`
+                tbody.appendChild(tr)
+            }
+        }
     }
 
     const displayWines = async(event) =>{
         let region = event.target.value
-
         let data = await getJSONData('/wines')
-
         let i = 1
         let num = data.length
-
-        document.querySelectorAll("thead")[0].innerHTML = `<tr><th class="h2">#</th><th class="h2">Wines Recommend</th></tr>`
+        document.querySelectorAll("thead")[0].innerHTML = `<tr class="table-dark"><th class="h2">#</th><th class="h2">Wines Recommend</th></tr>`
         document.querySelectorAll("tbody")[0].innerHTML = ''
         for (let j = 0; j < num; ++j) {
             if(data[j]['province'] === region){
                 let tbody = document.querySelectorAll('tbody')[0]
                 var tr = document.createElement('tr')
-                tr.innerHTML = `<td><kbd>${i}</kbd></td><td><ul><li>Name: ${data[j]['title']}</li><li>Winery: ${data[j]['winery']}</li><li>Grapes: ${data[j]['variety']}</li><li>Region: ${data[j]['region_1']}</li><li>Rating: ${data[j]['points']}</li><li>Price :$${data[j]['price']}</li><li>Description: ${data[j]['description']}</li></ul></td>`
+                tr.innerHTML = `<td><kbd>${i}</kbd></td><td><ul><li><strong>Name: </strong>${data[j]['title']}</li><li><strong>Winery: </strong>${data[j]['winery']}</li><li><strong>Grapes: </strong>${data[j]['variety']}</li><li><strong>Region: </strong>${data[j]['region_1']}</li><li><strong>Rating: </strong>${data[j]['points']}</li><li><strong>Price :</strong>$${data[j]['price']}</li><li><strong>Description: </strong>${data[j]['description']}</li></ul></td>`
                 i++
                 tbody.appendChild(tr)
             }
         } 
-
     }
 
     const displayCarousel = async() => {
         const data = await getJSONData('/grape')
-        console.log(data)
         var div1 = document.querySelector(' div[class="carousel-indicators"]')
         var div2 = document.querySelector(' div[class="carousel-inner"]')
         for(let i=0;i<data.length; i++){
@@ -117,16 +118,13 @@
 
     const displayReviews = async () => {
         const reviews = await getJSONData('/reviews')
-        console.log("yeah")
-        console.log(reviews)
-        document.getElementById('successmsg').innerHTML = ''
         if(reviews.length > 0) {
             let thead = document.querySelectorAll("thead")[1]
             thead.innerHTML =''
             let tbody = document.querySelectorAll("tbody")[1]
             tbody.innerHTML = ''
             let tr = document.createElement('tr')
-            tr.setAttribute('class', 'text-center h3')
+            tr.setAttribute('class', 'text-center h3 table-dark')
             tr.innerHTML = '<th>#</th><th>Reviews</th>'
             thead.appendChild(tr)
             for (let i = 0; i < reviews.length; i++) {
@@ -135,12 +133,9 @@
                 tr.innerHTML = `<td><kbd>${i+1}</kbd></td><td><ul><li><strong>Post by: </strong>${reviews[i]['postedBy'].split("@")[0]}</li><li><strong>Wine: </strong>${reviews[i]['wine']}</li><li><strong>Country: </strong>${reviews[i]['country']}</li><li><strong>Review: </strong><i>${reviews[i]['message']}</i></li><li><strong>Date: </strong>${reviews[i]['postedAt']}</li></ul></td>`
                 tbody.appendChild(tr)
             } 
-
         } else{
             console.info(`Posts collection is empty`)
         }
-        //let d = await document.getElementById('postedBy').setAttribute('value', email)
-        //console.log(d)
     }
 
     const postData = async (url = '', data = {}) => {
@@ -166,53 +161,28 @@
     const setCopyrightYear = () => {
         document.querySelector('#footer kbd span').innerHTML = new Date().getFullYear()
     }
-    //----------------------------------------------------
-    /**
-     * Client-side RESTful APIs
-     *  
-     */
-    //----------------------------------------------------
 
     const postreview = async (event) => {
-        // prevent refreshing the page
         event.preventDefault()
-        //email = document.querySelector('#Register input[name="email"]').value
         let wine = document.getElementById('wine').value
         let country = document.getElementById('country2').value
         let message = document.getElementById('message').value
-        //console.log(email, password, confirm)
-        const reply = await postData('/addReview2', { email,wine,country,message })
-        //displayReviews()
-        /*let msg = document.getElementById('successmsg')
-        msg.setAttribute('class','h3 text-danger')
-        msg.innerHTML = "Review message added successfully."*/
+        const reply = await postData('/addReview', { email,wine,country,message })
         alert("Review message added successfully.")
         displayReviews()
         document.getElementById('reviewform').reset()
         window.history.pushState(navigation.postreview, "", `/${navigation.postreview.url}`)
         displaySection(navigation.postreview)
-        //window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
-        //displaySection(navigation.wines)
+    }
 
-        //if (password == confirm) {
-        //    const reply = await postData('/signup', { email, password })
-            /*if (reply.error) {
-                registerWarning.innerHTML = `${reply.error}`
-                show(registerWarning)
-            }
-            else if (reply.success) {
-                console.log(reply, reply)
-                window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
-                displaySection(navigation.wines)
-                authorize(true)
-                document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
-                document.getElementById('postedBy').setAttribute('value', email)
-            }
-        }
-        else {
-            registerWarning.innerHTML = 'Passwords do not match. Re-enter your password'
-            show(registerWarning)
-        }*/
+    const deletemember = async (event) => {
+        event.preventDefault()
+        let email = document.querySelector('input[type=radio]:checked').value
+        const reply = await postData('/deleteMem', {email})
+        alert("Member deleted successfully.")
+        displayMembers()
+        window.history.pushState(navigation.admin, "", `/${navigation.admin.url}`)
+        displaySection(navigation.admin)
     }
 
     const signup = async (event) => {
@@ -221,7 +191,6 @@
         email = document.querySelector('#Register input[name="email"]').value
         let password = document.querySelector('#Register input[name="password"]').value
         let confirm = document.querySelector('#confirm').value
-        console.log(email, password, confirm)
 
         if (password == confirm) {
             if (password.length < 6){
@@ -238,7 +207,7 @@
                     window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
                     displaySection(navigation.wines)
                     authorize(true)
-                    document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
+                    document.querySelector('[data-authenticated] > span').innerHTML = `Hi ${email} `
                     document.getElementById('postedBy').setAttribute('value', email)
                 }
             }
@@ -248,42 +217,45 @@
             show(registerWarning)
         }
     }
+
     const signout = async (event) => {
         event.preventDefault()
-        console.log(email)
         const reply = await postData('/signout', { email })
         if (reply.success) {
-            console.log('inside signout')
-            console.log(reply.success)
-            console.log(reply, reply)
             window.history.pushState(navigation.home, "", `/${navigation.home.url}`)
             displaySection(navigation.home)
             authorize(false)
+            adminAuthorize(false)
         } else {
             console.log(reply)
         }
     }
+
     const signin = async (event) => {
         event.preventDefault()
         email = document.querySelector('#Login input[name="email"]').value
-        console.log(email)
         let password = document.querySelector('#Login input[name="password"]').value
         const reply = await postData('/signin', { email, password })
         if (reply.error) {
             loginWarning.innerHTML = `${reply.error}`
             show(loginWarning)
         }
-        else if (reply.success) {
-            console.log(reply, reply)
+        else if (reply.admin){
+            console.log("Admin shown")
+            displayMembers()
+            window.history.pushState(navigation.admin, "", `/${navigation.admin.url}`)
+            displaySection(navigation.admin)
+            adminAuthorize(true)
+            document.querySelector('[admin-authenticated] > span').innerHTML = `Admin `
+        } else if(reply.success) {
             window.history.pushState(navigation.wines, "", `/${navigation.wines.url}`)
             displaySection(navigation.wines)
             authorize(true)
-            document.querySelector('[data-authenticated] > span').innerHTML = `Welcome ${email}`
+            document.querySelector('[data-authenticated] > span').innerHTML = `Hi ${email} `
         }
     }
 
     const setActivePage = (section) => {
-        console.log(section)
         let menuItems = document.querySelectorAll('a[data-page]')
         menuItems.forEach(menuItem => {
             if (section === menuItem.textContent)
@@ -292,8 +264,8 @@
                 menuItem.classList.remove("active")
         })
     }
+
     const displaySection = (state) => {
-        console.log(state)
         const sections = document.querySelectorAll('section')
         sections.forEach(section => {
             let name = section.getAttribute('id')
@@ -306,6 +278,7 @@
                 hide(section)
         })
     }
+
     const authorize = (isAuthenticated) => {
         const authenticated = document.querySelectorAll('[data-authenticated]')
         const nonAuthenticated = document.querySelector('[data-nonAuthenticated]')
@@ -318,28 +291,35 @@
             show(nonAuthenticated)
         }
     }
-    // Handle forward/back buttons
+
+    const adminAuthorize = (isAuthenticated) => {
+        const authenticated = document.querySelectorAll('[admin-authenticated]')
+        const nonAuthenticated = document.querySelector('[data-nonAuthenticated]')
+        if(isAuthenticated) { 
+            authenticated.forEach(element => show(element))
+            hide(nonAuthenticated)
+        }
+        else {
+            authenticated.forEach(element => hide(element))
+            show(nonAuthenticated)
+        }
+    }
+
     window.onpopstate = (event) => {
-        // If a state has been provided, we have a "simulated" page
-        // and we update the current page.
         if (event.state) {
-            // Simulate the loading of the previous page
             displaySection(event.state)
         }
     }
+
     document.addEventListener("DOMContentLoaded", () => {
         displaySection(navigation.home)
         window.history.replaceState(navigation.home, "", document.location.href);
         setCopyrightYear()
-        //showmembers()
         populateCountries()
-        //displayReviews()
         document.querySelector('#country').onchange = populateRegions
         document.getElementById('region').onchange = displayWines
-        //c1.onchange = () => populateRegions()
         document.onclick = (event) => {
             const page = event.target.getAttribute('data-page')
-            console.log('this is page:'+page)
             if (page) {
                 event.preventDefault()
                 displayReviews()
@@ -349,6 +329,7 @@
             }
         }
         authorize(false)
+        adminAuthorize(false)
         const noticeDialog = document.querySelector("#noticeDialog")
         const errors = document.querySelectorAll('section div[name="error"]')
         errors.forEach(error => hide(error))
@@ -361,10 +342,11 @@
                 noticeDialog.close()
         }
         document.querySelector("#signup").onclick = signup
-        document.querySelector("#signout").onclick = signout
+        document.querySelector("#signout1").onclick = signout
+        document.querySelector("#signout2").onclick = signout
         document.querySelector("#signin").onclick = signin
         document.querySelector("#post_review").onclick = postreview
+        document.querySelector("#savechange").onclick = deletemember
 
     })
-    //----------------------------------------------------
 })()
