@@ -341,6 +341,12 @@
             if (document.querySelector("#agree").checked)
                 noticeDialog.close()
         }
+        window.onpopstate = (event) => {
+            if (event.state){
+                displaySection(event.state)
+            }
+        }
+
         document.querySelector("#signup").onclick = signup
         document.querySelector("#signout1").onclick = signout
         document.querySelector("#signout2").onclick = signout
